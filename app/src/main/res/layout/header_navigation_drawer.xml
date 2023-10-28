@@ -9,7 +9,7 @@
         android:layout_width="60dp"
         android:layout_marginStart="@dimen/sp10"
         android:layout_height="60dp"
-        android:src="@drawable/ic_sun"
+        android:src="@drawable/ic_sun_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

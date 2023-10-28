@@ -15,6 +15,7 @@
 
         <ImageButton
             android:id="@+id/btnBack"
+            style="@style/IconsMode"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@null"
@@ -59,6 +60,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                style="@style/IconsMode"
                 android:layout_width="@dimen/sp28"
                 android:layout_height="@dimen/sp28"
                 android:layout_marginEnd="@dimen/sp10"
@@ -81,6 +83,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                style="@style/IconsMode"
                 android:layout_width="@dimen/sp28"
                 android:layout_height="@dimen/sp28"
                 android:layout_marginEnd="@dimen/sp10"
@@ -103,6 +106,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                style="@style/IconsMode"
                 android:layout_width="@dimen/sp28"
                 android:layout_height="@dimen/sp28"
                 android:layout_marginEnd="@dimen/sp10"
@@ -125,6 +129,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                style="@style/IconsMode"
                 android:layout_width="@dimen/sp28"
                 android:layout_height="@dimen/sp28"
                 android:layout_marginEnd="@dimen/sp10"
@@ -147,6 +152,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                style="@style/IconsMode"
                 android:layout_width="@dimen/sp28"
                 android:layout_height="@dimen/sp28"
                 android:layout_marginEnd="@dimen/sp10"
@@ -169,6 +175,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                style="@style/IconsMode"
                 android:layout_width="@dimen/sp28"
                 android:layout_height="@dimen/sp28"
                 android:layout_marginEnd="@dimen/sp10"
@@ -191,6 +198,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                style="@style/IconsMode"
                 android:layout_width="@dimen/sp28"
                 android:layout_height="@dimen/sp28"
                 android:layout_marginEnd="@dimen/sp10"
@@ -213,6 +221,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                style="@style/IconsMode"
                 android:layout_width="@dimen/sp28"
                 android:layout_height="@dimen/sp28"
                 android:layout_marginEnd="@dimen/sp10"
@@ -235,6 +244,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                style="@style/IconsMode"
                 android:layout_width="@dimen/sp28"
                 android:layout_height="@dimen/sp28"
                 android:layout_marginEnd="@dimen/sp10"

@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(LayoutInflater.from(this));
-//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES); //For night mode theme
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); //For day mode theme
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES); //For night mode theme
+//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); //For day mode theme
 
         setContentView(binding.getRoot());
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -39,15 +39,13 @@ public class MainActivity extends AppCompatActivity {
             int itemId = item.getItemId();
             // Handle the item click here
             switch (itemId) {
+                case R.id.settings:
+                    startActivity(new Intent(this,SettingsActivity.class));
+                    break;
 
                 case R.id.iconDescription:
                     startActivity(new Intent(this,IconsDescActivity.class));
                     break;
-/*
-                case R.id.nav_item2:
-                    // Handle item 2 click
-                    break;
-*/
                 // Add more cases for other items
             }
             // Close the drawer after item selection
