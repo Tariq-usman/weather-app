@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/gropu1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/manageLocation"
+            android:icon="@drawable/ic_location"
+            android:title="Manage Location" />
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/ic_settings"
+            android:title="Settings" />
+        <item
+            android:id="@+id/units"
+            android:icon="@drawable/ic_designing_ruller"
+            android:title="Units" />
+        <item
+            android:id="@+id/iconDescription"
+            android:icon="@drawable/ic_circle_mark"
+            android:title="Icon Description" />
+    </group>
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/removeAds"
+            android:icon="@drawable/ic_block"
+            android:title="Remove Ada"/>
+        <item
+            android:id="@+id/rateUs"
+            android:icon="@drawable/ic_thumb_up"
+            android:title="Rate Us"/>
+        <item
+            android:id="@+id/privacyPolicy"
+            android:icon="@drawable/ic_privacy_tips"
+            android:title="Privacy Policy"/>
+    </group>
+</menu>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="forecasts">Forecasts</string>
+    <string name="getStarted">Get Start</string>
+    <string name="setUpManually">Set up manually</string>
+    <string name="allowWeather">Allow weather to access your location</string>
+    <string name="allowWeatherDesc">If you want to get the weather at your current location, you need to select the in-app location permission.\n\nIf you need to update the desktop widgets and notification bar with location changes, you need to select the background location permission. Weather will always use the location inthe background, even when the app is closed or not in use.\n\nYou can refuse to provide the location permission, then you need to select the city.</string>
+    <string name="temperature">%1$d°</string>
+</resources>
