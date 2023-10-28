@@ -17,6 +17,9 @@
         <item name="colorControlNormal">@color/black</item>
     </style>
 
+    <style name="IconsMode" parent="Theme.MaterialComponents.DayNight">
+        <item name="tint">@color/black</item>
+    </style>
 
     <style name="NavDrawerTextStyle">
         <item name="android:textSize">16sp</item>
