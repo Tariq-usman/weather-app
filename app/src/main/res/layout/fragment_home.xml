@@ -47,9 +47,10 @@
 
                     <ImageView
                         android:layout_width="100dp"
+                        android:id="@+id/imageView"
                         android:layout_height="100dp"
                         android:layout_marginStart="@dimen/sp10"
-                        android:src="@drawable/cloudy_sun"
+                        android:src="@drawable/overcast_day"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
                 </LinearLayout>

@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.res.Configuration;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
@@ -15,6 +16,7 @@ import com.weather.weatherapp.R;
 import com.weather.weatherapp.adapters.UnitsAdapter;
 import com.weather.weatherapp.databinding.UnitsDialogFragmentBinding;
 import com.weather.weatherapp.databinding.UnitsSelectionDialogBinding;
+import com.weather.weatherapp.utils.Constants;
 import com.weather.weatherapp.utils.Enums;
 
 import java.util.ArrayList;
@@ -50,21 +52,95 @@ public class UnitsDialogFragment extends DialogFragment {
         binding.tempView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDialog();
+                String unit = Enums.Units.TEMPERATURE.getKey();
+                showDialog(unit);
+            }
+        });
+        binding.windView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String unit = Enums.Units.WIND.getKey();
+                showDialog(unit);
+            }
+        });
+        binding.pressureView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String unit = Enums.Units.PRESSURE.getKey();
+                showDialog(unit);
+            }
+        });
+        binding.precipitationView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String unit = Enums.Units.PRECIPITATION.getKey();
+                showDialog(unit);
+            }
+        });
+        binding.visibilityView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String unit = Enums.Units.VISIBILITY.getKey();
+                showDialog(unit);
+            }
+        });
+        binding.timeView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String unit = Enums.Units.TIME.getKey();
+                showDialog(unit);
+            }
+        });
+        binding.dateView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String unit = Enums.Units.DATE.getKey();
+                showDialog(unit);
+            }
+        });
+
+        binding.btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dismiss();
             }
         });
     }
 
-    public void showDialog() {
+    public void showDialog(String unit) {
         Dialog dialog = new Dialog(requireContext());
         UnitsSelectionDialogBinding unitsSelectionDialogBinding = UnitsSelectionDialogBinding.inflate(LayoutInflater.from(requireContext()));
         dialog.setContentView(unitsSelectionDialogBinding.getRoot());
         dialog.show();
+        TextView textView = unitsSelectionDialogBinding.tvTitle;
         ArrayList<String> enums = new ArrayList<>();
-        enums.addAll(Enums.VisibilityUnit.getAllVisibilityUnits());
+        String title = "";
+        if (unit.equalsIgnoreCase(Constants.TEMPERATURE)) {
+            enums.addAll(Enums.TemperatureUnit.getALlTempUnits());
+            title = unit + " units";
+        } else if (unit.equalsIgnoreCase(Constants.WIND)) {
+            enums.addAll(Enums.WindUnit.getALlWindUnits());
+            title = unit + " units";
+        } else if (unit.equalsIgnoreCase(Constants.PRESSURE)) {
+            enums.addAll(Enums.PressureUnit.getALlPressureUnits());
+            title = unit + " units";
+        } else if (unit.equalsIgnoreCase(Constants.PRECIPITATION)) {
+            enums.addAll(Enums.PrecipitationUnit.getALlPrecipitationUnits());
+            title = unit + " units";
+        } else if (unit.equalsIgnoreCase(Constants.VISIBILITY)) {
+            enums.addAll(Enums.VisibilityUnit.getAllVisibilityUnits());
+            title = unit + " units";
+        } else if (unit.equalsIgnoreCase(Constants.TIME)) {
+            enums.addAll(Enums.TimeFormat.getAllTimeFormats());
+            title = unit + " formats";
+        } else {
+            enums.addAll(Enums.DateFormat.getAllTimeFormats());
+            title = unit + " formats";
+        }
+        textView.setText(title);
         RecyclerView recyclerView = unitsSelectionDialogBinding.unitesRecycler;
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        UnitsAdapter unitsAdapter = new UnitsAdapter(requireContext(),enums);
+        UnitsAdapter unitsAdapter = new UnitsAdapter(requireContext(), enums);
         recyclerView.setAdapter(unitsAdapter);
 
     }

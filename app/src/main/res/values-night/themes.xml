@@ -6,7 +6,7 @@
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondary">@color/white</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
@@ -23,6 +23,12 @@
 
     <style name="IconsMode" parent="Theme.MaterialComponents.DayNight">
         <item name="tint">@color/white</item>
+    </style>
+
+    <style name="SearchViewStyle" parent="Widget.AppCompat.Light.SearchView">
+        <item name="android:editTextColor">@color/white</item>
+        <item name="android:textSize">@dimen/sp14</item>
+        <item name="fontFamily">@font/sofia_pro_medium</item>
     </style>
 
     <style name="Theme.Weather.DialogFragmentNight" parent="Theme.MaterialComponents.DayNight.Dialog">
