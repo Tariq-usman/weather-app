@@ -25,8 +25,9 @@
         <item name="tint">@color/white</item>
     </style>
 
-    <style name="SearchViewStyle" parent="Widget.AppCompat.Light.SearchView">
+    <style name="SearchViewStyle" parent="Theme.MaterialComponents.DayNight">
         <item name="android:editTextColor">@color/white</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/sp14</item>
         <item name="fontFamily">@font/sofia_pro_medium</item>
     </style>

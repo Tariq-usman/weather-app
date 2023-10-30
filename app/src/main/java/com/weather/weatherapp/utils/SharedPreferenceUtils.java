@@ -2,6 +2,7 @@ package com.weather.weatherapp.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 public class SharedPreferenceUtils {
 
@@ -9,6 +10,12 @@ public class SharedPreferenceUtils {
     protected Context mContext;
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mSharedPreferencesEditor;
+
+
+    private static final String PREF_THEME = "PREF_THEME";
+    public static final String THEME_DAY = "theme_day";
+    public static final String THEME_NIGHT = "theme_night";
+    public static final String THEME_AUTO = "theme_auto";
 
     private String APP_PREFERENCES = "weather";
     private String IS_FIRST = "isFirst";
@@ -23,10 +30,21 @@ public class SharedPreferenceUtils {
         }
         return mSharedPreferenceUtils;
     }
+
     private SharedPreferenceUtils(Context context) {
         mContext = context;
         mSharedPreferences = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         mSharedPreferencesEditor = mSharedPreferences.edit();
+    }
+
+    public void setAppTheme(String theme) {
+        mSharedPreferencesEditor.putString(PREF_THEME, theme);
+        mSharedPreferencesEditor.apply();
+        mSharedPreferencesEditor.commit();
+    }
+
+    public String getAppTheme() {
+        return mSharedPreferences.getString(PREF_THEME, THEME_DAY);
     }
 
     public void setIsNotFirst(boolean isBeforeAppear) {

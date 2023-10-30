@@ -41,13 +41,14 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
+        android:id="@+id/enterNameName"
         android:layout_width="match_parent"
         android:layout_height="46dp"
         android:background="@drawable/circular_white_border_empty"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <androidx.appcompat.widget.SearchView
+        <!--<androidx.appcompat.widget.SearchView
             android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -55,7 +56,17 @@
             app:iconifiedByDefault="false"
             app:queryBackground="@null"
             app:queryHint="Search for an Athlete"
-            app:theme="@style/SearchViewStyle" />
+            app:theme="@style/SearchViewStyle" />-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_search"
+            android:drawableTint="@color/white"
+            android:paddingHorizontal="@dimen/sp20"
+            android:text="Enter the name of City"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp14"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
