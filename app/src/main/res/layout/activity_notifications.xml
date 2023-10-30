@@ -91,6 +91,7 @@
             </LinearLayout>
 
             <Switch
+                android:id="@+id/notificationBarSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -143,6 +144,7 @@
             </LinearLayout>
 
             <Switch
+                android:id="@+id/dailyWeatherSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -195,6 +197,7 @@
             </LinearLayout>
 
             <Switch
+                android:id="@+id/weatherAlertSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>

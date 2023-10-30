@@ -20,6 +20,8 @@ public class SharedPreferenceUtils {
     private String APP_PREFERENCES = "weather";
     private String IS_FIRST = "isFirst";
 
+    private String NOTIFICATION_BAR = "isFirst";
+
     public static synchronized SharedPreferenceUtils getInstance(Context context) {
         try {
             if (mSharedPreferenceUtils == null) {
@@ -55,5 +57,15 @@ public class SharedPreferenceUtils {
 
     public boolean isNotFirst() {
         return mSharedPreferences.getBoolean(IS_FIRST, false);
+    }
+
+    public void setNotificationBarStatus(boolean isBarActive) {
+        mSharedPreferencesEditor.putBoolean(NOTIFICATION_BAR, isBarActive);
+        mSharedPreferencesEditor.apply();
+        mSharedPreferencesEditor.commit();
+    }
+
+    public boolean isNotificationBarActive() {
+        return mSharedPreferences.getBoolean(NOTIFICATION_BAR, false);
     }
 }
