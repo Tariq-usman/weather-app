@@ -47,9 +47,10 @@
 
                     <ImageView
                         android:layout_width="100dp"
+                        android:id="@+id/imageView"
                         android:layout_height="100dp"
                         android:layout_marginStart="@dimen/sp10"
-                        android:src="@drawable/cloudy_sun"
+                        android:src="@drawable/overcast_day"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
                 </LinearLayout>
@@ -263,7 +264,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="93 %"
+                            android:text="4.6 km"
                             android:textColor="@color/white"
                             android:textSize="@dimen/sp24"
                             android:textStyle="bold" />
@@ -306,7 +307,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="93 %"
+                            android:text="1(Low)"
                             android:textColor="@color/white"
                             android:textSize="@dimen/sp24"
                             android:textStyle="bold" />
@@ -385,13 +386,13 @@
                                 android:layout_width="@dimen/sp24"
                                 android:layout_height="@dimen/sp24"
                                 android:layout_marginEnd="@dimen/sp4"
-                                android:src="@drawable/ic_humidity"
+                                android:src="@drawable/ic_clouds"
                                 app:tint="@color/white" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Humidity"
+                                android:text="Cloud Cover"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/sp14" />
                         </LinearLayout>

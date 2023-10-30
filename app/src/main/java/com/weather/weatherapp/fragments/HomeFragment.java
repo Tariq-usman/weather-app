@@ -1,5 +1,9 @@
 package com.weather.weatherapp.fragments;
 
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.AnimatedImageDrawable;
+import android.graphics.drawable.AnimatedVectorDrawable;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +14,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 
+import com.caverock.androidsvg.SVG;
+import com.caverock.androidsvg.SVGParseException;
+import com.weather.weatherapp.R;
 import com.weather.weatherapp.adapters.DailyForecastAdapter;
 import com.weather.weatherapp.adapters.WeeklyForecastAdapter;
 import com.weather.weatherapp.databinding.FragmentHomeBinding;

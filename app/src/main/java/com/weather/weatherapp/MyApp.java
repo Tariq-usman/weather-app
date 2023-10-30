@@ -1,21 +1,33 @@
 package com.weather.weatherapp;
 
 import android.app.Application;
-import android.content.Intent;
+
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.weather.weatherapp.utils.SharedPreferenceUtils;
 
 public class MyApp extends Application {
+    SharedPreferenceUtils preferenceUtils;
+
     @Override
     public void onCreate() {
         super.onCreate();
-       /* Intent alternativeIntent;
-        if (!SharedPreferenceUtils.getInstance(getApplicationContext()).isFirst()) {
-            alternativeIntent = new Intent(this, MainActivity2.class);
+        preferenceUtils = SharedPreferenceUtils.getInstance(getApplicationContext());
+
+        String theme = preferenceUtils.getAppTheme();
+        updateTheme(theme);
+    }
+
+    public void updateTheme(String theme) {
+        int themeMode = 0;
+        if (theme.equalsIgnoreCase(SharedPreferenceUtils.THEME_DAY)) {
+            themeMode = AppCompatDelegate.MODE_NIGHT_NO;
+        } else if (theme.equalsIgnoreCase(SharedPreferenceUtils.THEME_NIGHT)) {
+            themeMode = AppCompatDelegate.MODE_NIGHT_YES;
         } else {
-            alternativeIntent = new Intent(this, MainActivity.class);
+            themeMode = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
         }
-        alternativeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(alternativeIntent);
-    */}
+        AppCompatDelegate.setDefaultNightMode(themeMode);
+    }
+
 }

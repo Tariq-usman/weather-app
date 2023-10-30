@@ -15,6 +15,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.weather.weatherapp.R;
 import com.weather.weatherapp.databinding.ActivityMainBinding;
 import com.weather.weatherapp.fragments.HomeFragment;
+import com.weather.weatherapp.fragments.UnitsDialogFragment;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(LayoutInflater.from(this));
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES); //For night mode theme
+//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES); //For night mode theme
 //        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); //For day mode theme
 
         setContentView(binding.getRoot());
@@ -39,12 +40,18 @@ public class MainActivity extends AppCompatActivity {
             int itemId = item.getItemId();
             // Handle the item click here
             switch (itemId) {
-                case R.id.settings:
-                    startActivity(new Intent(this,SettingsActivity.class));
+                case R.id.manageLocation:
+                    startActivity(new Intent(this,ManageLocationsActivity.class));
                     break;
-
+                case R.id.settings:
+                    startActivity(new Intent(this, SettingsActivity.class));
+                    break;
+                case R.id.units:
+                    UnitsDialogFragment unitsDialogFragment = new UnitsDialogFragment();
+                    unitsDialogFragment.show(getSupportFragmentManager(), "Units");
+                    break;
                 case R.id.iconDescription:
-                    startActivity(new Intent(this,IconsDescActivity.class));
+                    startActivity(new Intent(this, IconsDescActivity.class));
                     break;
                 // Add more cases for other items
             }

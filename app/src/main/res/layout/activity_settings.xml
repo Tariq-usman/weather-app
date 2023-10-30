@@ -69,6 +69,7 @@
                     android:textSize="@dimen/sp14" />
 
                 <LinearLayout
+                    android:id="@+id/notificationsSetting"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/sp10"
@@ -149,11 +150,9 @@
                             android:textColor="@color/gray" />
                     </LinearLayout>
 
-                    <ImageView
-                        style="@style/IconsMode"
-                        android:layout_width="@dimen/sp30"
-                        android:layout_height="@dimen/sp20"
-                        android:src="@drawable/ic_arrow_forward" />
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -236,9 +235,11 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
+                        android:id="@+id/lightMode"
                         android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_weight="1"
+                        android:background="@drawable/bg_light_mode_view"
                         android:gravity="center"
                         android:orientation="horizontal">
 
@@ -262,6 +263,7 @@
                         android:background="@color/gray" />
 
                     <LinearLayout
+                        android:id="@+id/darkMode"
                         android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_weight="1"
@@ -288,9 +290,11 @@
                         android:background="@color/gray" />
 
                     <LinearLayout
+                        android:id="@+id/autoMode"
                         android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_weight="1"
+                        android:background="@drawable/bg_auto_mode_view"
                         android:gravity="center"
                         android:orientation="horizontal">
 
