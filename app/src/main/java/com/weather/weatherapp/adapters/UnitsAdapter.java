@@ -2,7 +2,9 @@ package com.weather.weatherapp.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 public class UnitsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
     private ArrayList<String> enums;
+    private int lastPosition = -1;
 
     public UnitsAdapter(Context context, ArrayList<String> enums) {
         this.context = context;
@@ -31,6 +34,7 @@ public class UnitsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ((UnitsViewHolder) holder).binding.tvUnit.setText(enums.get(position));
+        ((UnitsViewHolder) holder).binding.radioButton.setChecked(lastPosition == position);
     }
 
     @Override
@@ -45,9 +49,20 @@ public class UnitsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         public UnitsViewHolder(@NonNull RowItemUnitsBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
-        }
-
-        public void bindView() {
+            binding.getRoot().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    lastPosition = getAdapterPosition();
+                    notifyDataSetChanged();
+                }
+            });
+            binding.radioButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    lastPosition = getAdapterPosition();
+                    notifyDataSetChanged();
+                }
+            });
         }
     }
 }

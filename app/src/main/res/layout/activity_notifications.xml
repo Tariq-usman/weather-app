@@ -84,6 +84,7 @@
                     android:textSize="@dimen/sp16" />
 
                 <TextView
+                    android:id="@+id/notificationBarStatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Turn On"
@@ -137,6 +138,7 @@
                     android:textSize="@dimen/sp16" />
 
                 <TextView
+                    android:id="@+id/dailyWeatherStatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Morning and evening weather notification and display weather"
@@ -190,6 +192,7 @@
                     android:textSize="@dimen/sp16" />
 
                 <TextView
+                    android:id="@+id/weatherAlertStatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Turn On"

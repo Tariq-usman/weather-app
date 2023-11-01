@@ -3,8 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_one">
+    android:background="@drawable/sky_with_white_clouds"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/nightBg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <!-- ImageButton to open the drawer -->
     <ImageButton
         android:layout_width="wrap_content"

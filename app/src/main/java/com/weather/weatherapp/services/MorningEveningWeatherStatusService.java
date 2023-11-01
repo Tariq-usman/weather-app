@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -21,6 +22,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.graphics.drawable.IconCompat;
 
 import com.weather.weatherapp.R;
+import com.weather.weatherapp.activities.MainActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,8 +31,7 @@ import java.util.Locale;
 public class MorningEveningWeatherStatusService extends Service {
     private String CHANNEL_ID = "NOTIFICATION_CHANNEL";
     private NotificationManager notificationManager;
-    private NotificationCompat.Builder notificationCompat;
-    private static final int NOTIFICATION_ID = 100;
+    private static final int NOTIFICATION_ID = 1;
     private boolean barStatus = false;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -70,9 +71,15 @@ public class MorningEveningWeatherStatusService extends Service {
             //convert text to bitmap
             Bitmap bitmap = createBitmapFromString("14°");
 
+            Intent mIntent = new Intent(this, MainActivity.class);
+            mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            mIntent.putExtra("notificationId", NOTIFICATION_ID);
+
+            PendingIntent mainIntent = PendingIntent.getActivity(this, 0, mIntent, PendingIntent.FLAG_ONE_SHOT);
+
             // Apply the layouts to the notification.
-            Notification customNotification = null;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            NotificationCompat.Builder customNotification = null;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
                 customNotification = new NotificationCompat.Builder(this, CHANNEL_ID)
                         .setSmallIcon(smallIcon)
                         .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
@@ -80,13 +87,12 @@ public class MorningEveningWeatherStatusService extends Service {
                         .setCustomBigContentView(notificationLayoutExpanded)
                         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                         .setSound(null)
+                        .setAutoCancel(true)
                         .setSilent(true)
-                        .build();
+                        .setContentIntent(mainIntent);
             }
-            notificationManager.notify(NOTIFICATION_ID, customNotification);
-            Notification notification = customNotification;
-            startForeground(NOTIFICATION_ID, notification);
-            // Download the image using Glide
+            Notification notification = customNotification.build();
+            notificationManager.notify(NOTIFICATION_ID,notification);
         } else {
             dismissNotification();
         }

@@ -1,6 +1,7 @@
 package com.weather.weatherapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import com.weather.weatherapp.MyApp;
 import com.weather.weatherapp.R;
 import com.weather.weatherapp.databinding.ActivitySettingsBinding;
 import com.weather.weatherapp.utils.SharedPreferenceUtils;
+import com.weather.weatherapp.viewmodels.MainViewModel;
 
 public class SettingsActivity extends AppCompatActivity {
     private ActivitySettingsBinding binding;
@@ -19,11 +21,13 @@ public class SettingsActivity extends AppCompatActivity {
     SharedPreferenceUtils preferenceUtils;
     private MyApp app;
 
+    private MainViewModel viewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivitySettingsBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
+        viewModel = new ViewModelProvider(this).get(MainViewModel.class);
         app = (MyApp) getApplication();
         preferenceUtils = SharedPreferenceUtils.getInstance(this);
         binding.btnBack.setOnClickListener(new View.OnClickListener() {
@@ -43,10 +47,12 @@ public class SettingsActivity extends AppCompatActivity {
 
         binding.lightMode.setOnClickListener(view -> {
             preferenceUtils.setAppTheme(SharedPreferenceUtils.THEME_DAY);
+            viewModel.updateData(false);
             updateDisplayMode(SharedPreferenceUtils.THEME_DAY);
         });
         binding.darkMode.setOnClickListener(view -> {
             preferenceUtils.setAppTheme(SharedPreferenceUtils.THEME_NIGHT);
+            viewModel.updateData(true);
             updateDisplayMode(SharedPreferenceUtils.THEME_NIGHT);
         });
         binding.autoMode.setOnClickListener(view -> {

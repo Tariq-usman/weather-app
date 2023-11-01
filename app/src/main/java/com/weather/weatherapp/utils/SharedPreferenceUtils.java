@@ -21,6 +21,7 @@ public class SharedPreferenceUtils {
 
     private String CURRENT_WEATHER_ALERT = "currentWeatherAlert";
     private String MOR_EVE_WEATHER_ALERT = "morEveWeatherAlert";
+    private String WEATHER_ALERT = "weatherAlert";
 
     public static synchronized SharedPreferenceUtils getInstance(Context context) {
         try {
@@ -77,5 +78,15 @@ public class SharedPreferenceUtils {
 
     public boolean isMorEveWeatherActive() {
         return mSharedPreferences.getBoolean(MOR_EVE_WEATHER_ALERT, false);
+    }
+
+    public void setWeatherAlertStatus(boolean isBarActive) {
+        mSharedPreferencesEditor.putBoolean(WEATHER_ALERT, isBarActive);
+        mSharedPreferencesEditor.apply();
+        mSharedPreferencesEditor.commit();
+    }
+
+    public boolean isWeatherAlertActive() {
+        return mSharedPreferences.getBoolean(WEATHER_ALERT, false);
     }
 }

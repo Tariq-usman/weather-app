@@ -39,10 +39,12 @@ public class NotificationsActivity extends AppCompatActivity {
         });
 
         binding.notificationBarSwitch.setChecked(sharedPreferenceUtils.isCurrentWeatherActive());
+        binding.notificationBarStatus.setText(sharedPreferenceUtils.isMorEveWeatherActive() ? "Turn On" : "Turn Off");
         binding.notificationBarSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 binding.notificationBarSwitch.setChecked(isChecked);
+                binding.notificationBarStatus.setText(isChecked ? "Turn On" : "Turn Off");
                 sharedPreferenceUtils.setCurrentWeatherStatus(isChecked);
                 if (isChecked) {
                     PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(WeatherUpdateWorker.class, 2, TimeUnit.MINUTES).addTag(workManagerTag).build();
@@ -57,10 +59,12 @@ public class NotificationsActivity extends AppCompatActivity {
         });
 
         binding.dailyWeatherSwitch.setChecked(sharedPreferenceUtils.isMorEveWeatherActive());
+        binding.dailyWeatherStatus.setText(sharedPreferenceUtils.isMorEveWeatherActive() ? "Turn On" : "Turn Off");
         binding.dailyWeatherSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 binding.dailyWeatherSwitch.setChecked(isChecked);
+                binding.dailyWeatherStatus.setText(isChecked ? "Turn On" : "Turn Off");
                 sharedPreferenceUtils.setMorEveWeatherStatus(isChecked);
                 if (isChecked) {
                     // Calculate the initial delay for the morning task to start at 6 AM every day
@@ -110,6 +114,19 @@ public class NotificationsActivity extends AppCompatActivity {
                 }
             }
         });
+
+        binding.weatherAlertSwitch.setChecked(sharedPreferenceUtils.isWeatherAlertActive());
+        binding.weatherAlertStatus.setText(sharedPreferenceUtils.isWeatherAlertActive() ? "Turn On" : "Turn Off");
+
+        binding.weatherAlertSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                binding.weatherAlertSwitch.setChecked(isChecked);
+                binding.weatherAlertStatus.setText(isChecked ? "Turn On" : "Turn Off");
+                sharedPreferenceUtils.setWeatherAlertStatus(isChecked);
+            }
+        });
+
 
     }
 }

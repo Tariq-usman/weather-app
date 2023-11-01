@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -21,6 +22,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.graphics.drawable.IconCompat;
 
 import com.weather.weatherapp.R;
+import com.weather.weatherapp.activities.MainActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -68,11 +70,14 @@ public class CurrentWeatherStatusService extends Service {
             RemoteViews notificationLayout = new RemoteViews(getPackageName(), R.layout.notification_small);
             RemoteViews notificationLayoutExpanded = new RemoteViews(getPackageName(), R.layout.weather_notification_view);
 
+            notificationLayout.setTextViewText(R.id.notification_title, "Current weather is 14°");
+            notificationLayoutExpanded.setTextViewText(R.id.notification_title, "Current weather is 14°");
+            notificationLayoutExpanded.setTextViewText(R.id.notification_body, "This is dummy data about the weather 14°");
+
             //convert text to bitmap
             Bitmap bitmap = createBitmapFromString("14°");
-
             // Apply the layouts to the notification.
-            Notification customNotification = null;
+            NotificationCompat.Builder customNotification = null;
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
                 customNotification = new NotificationCompat.Builder(this, CHANNEL_ID)
                         .setSmallIcon(IconCompat.createFromIcon(Icon.createWithBitmap(bitmap)))
@@ -81,13 +86,11 @@ public class CurrentWeatherStatusService extends Service {
                         .setCustomBigContentView(notificationLayoutExpanded)
                         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                         .setSound(null)
-                        .setSilent(true)
-                        .build();
+                        .setSilent(true);
             }
-            notificationManager.notify(NOTIFICATION_ID, customNotification);
-            Notification notification = customNotification;
+            Notification notification = customNotification.build();
+            notificationManager.notify(NOTIFICATION_ID, notification);
             startForeground(NOTIFICATION_ID, notification);
-            // Download the image using Glide
         } else {
             dismissNotification();
         }
