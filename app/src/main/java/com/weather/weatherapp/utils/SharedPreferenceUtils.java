@@ -2,7 +2,6 @@ package com.weather.weatherapp.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
 public class SharedPreferenceUtils {
 
@@ -20,7 +19,8 @@ public class SharedPreferenceUtils {
     private String APP_PREFERENCES = "weather";
     private String IS_FIRST = "isFirst";
 
-    private String NOTIFICATION_BAR = "isFirst";
+    private String CURRENT_WEATHER_ALERT = "currentWeatherAlert";
+    private String MOR_EVE_WEATHER_ALERT = "morEveWeatherAlert";
 
     public static synchronized SharedPreferenceUtils getInstance(Context context) {
         try {
@@ -59,13 +59,23 @@ public class SharedPreferenceUtils {
         return mSharedPreferences.getBoolean(IS_FIRST, false);
     }
 
-    public void setNotificationBarStatus(boolean isBarActive) {
-        mSharedPreferencesEditor.putBoolean(NOTIFICATION_BAR, isBarActive);
+    public void setCurrentWeatherStatus(boolean isBarActive) {
+        mSharedPreferencesEditor.putBoolean(CURRENT_WEATHER_ALERT, isBarActive);
         mSharedPreferencesEditor.apply();
         mSharedPreferencesEditor.commit();
     }
 
-    public boolean isNotificationBarActive() {
-        return mSharedPreferences.getBoolean(NOTIFICATION_BAR, false);
+    public boolean isCurrentWeatherActive() {
+        return mSharedPreferences.getBoolean(CURRENT_WEATHER_ALERT, false);
+    }
+
+    public void setMorEveWeatherStatus(boolean isBarActive) {
+        mSharedPreferencesEditor.putBoolean(MOR_EVE_WEATHER_ALERT, isBarActive);
+        mSharedPreferencesEditor.apply();
+        mSharedPreferencesEditor.commit();
+    }
+
+    public boolean isMorEveWeatherActive() {
+        return mSharedPreferences.getBoolean(MOR_EVE_WEATHER_ALERT, false);
     }
 }
