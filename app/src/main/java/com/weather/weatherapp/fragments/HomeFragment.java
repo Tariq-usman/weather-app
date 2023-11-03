@@ -5,6 +5,7 @@ import android.graphics.drawable.AnimatedImageDrawable;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 
+import com.bumptech.glide.Glide;
 import com.caverock.androidsvg.SVG;
+import com.caverock.androidsvg.SVGImageView;
 import com.caverock.androidsvg.SVGParseException;
 import com.weather.weatherapp.R;
 import com.weather.weatherapp.adapters.DailyForecastAdapter;
@@ -42,6 +45,8 @@ public class HomeFragment extends Fragment {
         int temperature = 12;
         String temperatureText = temperature + degreeSymbol;
         binding.tvTemp.setText(temperatureText);
+
+        binding.animationView.playAnimation();
 
         dailyForecastRecycler = binding.dailyForecastRecycler;
         dailyForecastRecycler.setLayoutManager(new LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false));

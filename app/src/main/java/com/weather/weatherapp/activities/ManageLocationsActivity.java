@@ -14,25 +14,37 @@ import android.view.View;
 import com.weather.weatherapp.R;
 import com.weather.weatherapp.adapters.ManageLocationsAdapter;
 import com.weather.weatherapp.databinding.ActivityManageLocationsBinding;
+import com.weather.weatherapp.utils.SharedPreferenceUtils;
 
 public class ManageLocationsActivity extends AppCompatActivity {
 
     private ActivityManageLocationsBinding binding;
     private RecyclerView managedLocationsRecycler;
     private ManageLocationsAdapter manageLocationsAdapter;
-
+private SharedPreferenceUtils preferenceUtils;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityManageLocationsBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
-        int colorNight = ContextCompat.getColor(this, R.color.trans);
+        preferenceUtils = SharedPreferenceUtils.getInstance(getApplicationContext());
 
+        String theme = preferenceUtils.getAppTheme();
+        int colorNight = ContextCompat.getColor(ManageLocationsActivity.this, R.color.trans);
+        int colorday = ContextCompat.getColor(ManageLocationsActivity.this, R.color.white);
         ObjectAnimator colorAnimation = ObjectAnimator.ofArgb(binding.nightBg, "backgroundColor", colorNight);
-        colorAnimation.setDuration(1000); // Set the duration of the color transition in milliseconds (1 second in this example)
+        colorAnimation.setDuration(100); // Set the duration of the color transition in milliseconds (1 second in this example)
         boolean isNightMode = false; // Determine whether it's night mode
+        if (theme.equalsIgnoreCase(SharedPreferenceUtils.THEME_DAY)) {
+            isNightMode = false;
+        } else if (theme.equalsIgnoreCase(SharedPreferenceUtils.THEME_NIGHT)) {
+            isNightMode = true;
+
+        }
         if (isNightMode) {
             colorAnimation.start(); // Start the animation for night mode
+        } else {
+            colorAnimation.reverse();
         }
         binding.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override

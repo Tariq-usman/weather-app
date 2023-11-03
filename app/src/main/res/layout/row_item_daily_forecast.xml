@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/circular_white_border"
     android:gravity="center"
     android:orientation="vertical"
@@ -14,10 +15,13 @@
         android:textColor="@color/white"
         android:textSize="@dimen/sp14" />
 
-    <ImageView
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        app:lottie_rawRes="@raw/animmm"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
         android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/cloudy_sun" />
+        android:layout_height="50dp"/>
 
     <TextView
         android:layout_width="wrap_content"

@@ -47,14 +47,15 @@ public class WeeklyForecastAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             View wfView = ((WeeklyFooterViewHolder) holder).binding.getRoot();
             wfView.setOnClickListener(view1 -> {
                 Log.i("viewClicked: ", "Footer view");
-                Intent intent = new Intent(context, WeeklyForecastActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
+
             });
         } else {
             View view = ((WeeklyForecastViewHolder) holder).binding.getRoot();
             view.setOnClickListener(view1 -> {
                 Log.i("viewClicked: ", "Regular view");
+                Intent intent = new Intent(context, WeeklyForecastActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             });
         }
 

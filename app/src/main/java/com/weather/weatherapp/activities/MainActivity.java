@@ -9,10 +9,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.animation.ObjectAnimator;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,6 +25,7 @@ import com.weather.weatherapp.R;
 import com.weather.weatherapp.databinding.ActivityMainBinding;
 import com.weather.weatherapp.fragments.HomeFragment;
 import com.weather.weatherapp.fragments.UnitsDialogFragment;
+import com.weather.weatherapp.utils.SharedPreferenceUtils;
 import com.weather.weatherapp.viewmodels.MainViewModel;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,31 +34,69 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navView;
     DrawerLayout drawerLayout;
     private MainViewModel viewModel;
+    SharedPreferenceUtils preferenceUtils;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        preferenceUtils = SharedPreferenceUtils.getInstance(getApplicationContext());
+
+    }
+
+    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals("mode")) {
+                preferenceUtils = SharedPreferenceUtils.getInstance(getApplicationContext());
+
+                String theme = preferenceUtils.getAppTheme();
+                int colorNight = ContextCompat.getColor(MainActivity.this, R.color.trans);
+                int colorday = ContextCompat.getColor(MainActivity.this, R.color.white);
+                ObjectAnimator colorAnimation = ObjectAnimator.ofArgb(binding.nightBg, "backgroundColor", colorNight);
+                colorAnimation.setDuration(1000); // Set the duration of the color transition in milliseconds (1 second in this example)
+                boolean isNightMode = false; // Determine whether it's night mode
+                if (theme.equalsIgnoreCase(SharedPreferenceUtils.THEME_DAY)) {
+                    isNightMode = false;
+                } else if (theme.equalsIgnoreCase(SharedPreferenceUtils.THEME_NIGHT)) {
+                    isNightMode = true;
+
+                }
+                if (isNightMode) {
+                    colorAnimation.start(); // Start the animation for night mode
+                } else {
+                    colorAnimation.reverse();
+                }
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
-        viewModel = new ViewModelProvider(this).get(MainViewModel.class);
+        /*IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("mode");
+        registerReceiver(broadcastReceiver, intentFilter);*/
+        preferenceUtils = SharedPreferenceUtils.getInstance(getApplicationContext());
 
-        viewModel.getData().observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                try {
-                    Log.i("check", "ckj");
-                    int colorNight = ContextCompat.getColor(MainActivity.this, R.color.trans);
-                    ObjectAnimator colorAnimation = ObjectAnimator.ofArgb(binding.nightBg, "backgroundColor", colorNight);
-                    colorAnimation.setDuration(1000); // Set the duration of the color transition in milliseconds (1 second in this example)
-                    boolean isNightMode = aBoolean; // Determine whether it's night mode
-                    if (isNightMode) {
-                        colorAnimation.start(); // Start the animation for night mode
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        String theme = preferenceUtils.getAppTheme();
+        int colorNight = ContextCompat.getColor(MainActivity.this, R.color.trans);
+        int colorday = ContextCompat.getColor(MainActivity.this, R.color.white);
+        ObjectAnimator colorAnimation = ObjectAnimator.ofArgb(binding.nightBg, "backgroundColor", colorNight);
+        colorAnimation.setDuration(1000); // Set the duration of the color transition in milliseconds (1 second in this example)
+        boolean isNightMode = false; // Determine whether it's night mode
+        if (theme.equalsIgnoreCase(SharedPreferenceUtils.THEME_DAY)) {
+            isNightMode = false;
+        } else if (theme.equalsIgnoreCase(SharedPreferenceUtils.THEME_NIGHT)) {
+            isNightMode = true;
+
+        }
+        if (isNightMode) {
+            colorAnimation.start(); // Start the animation for night mode
+        } else {
+            colorAnimation.reverse();
+        }
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.main_content, new HomeFragment()).commit();
