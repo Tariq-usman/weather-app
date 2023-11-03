@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/sky_with_white_clouds"
-    tools:context=".activities.TwentyFourHrsForecastActivity">
+    tools:context=".activities.FifteenDaysForecastActivity">
 
     <View
         android:id="@+id/nightBg"
@@ -15,8 +15,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_marginTop="@dimen/sp14"
+        android:orientation="vertical"
         android:paddingHorizontal="@dimen/sp16">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="24 HOURS FORECAST"
+                android:text="Lahore"
                 android:textColor="@color/white"
                 android:textSize="@dimen/sp24"
                 android:textStyle="bold"
@@ -51,10 +51,10 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/oneDayForecastRecycler"
+            android:id="@+id/fifteenDaysForecastRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:overScrollMode="never"
-            tools:listitem="@layout/row_item_24_hours" />
+            tools:listitem="@layout/row_item_fifteen_day" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

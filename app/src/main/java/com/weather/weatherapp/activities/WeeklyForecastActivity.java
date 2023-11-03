@@ -13,8 +13,10 @@ import android.view.View;
 import com.weather.weatherapp.R;
 import com.weather.weatherapp.adapters.DaysAdapter;
 import com.weather.weatherapp.databinding.ActivityWeeklyForecastBinding;
+import com.weather.weatherapp.utils.Enums;
 import com.weather.weatherapp.utils.HorizontalRecyclerItemDecorator;
 import com.weather.weatherapp.utils.SharedPreferenceUtils;
+import com.weather.weatherapp.utils.Utils;
 
 public class WeeklyForecastActivity extends AppCompatActivity {
     private ActivityWeeklyForecastBinding binding;
@@ -27,6 +29,7 @@ public class WeeklyForecastActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityWeeklyForecastBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
+        Utils.overlayStatusBar(this);
         binding.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -14,6 +14,7 @@ import com.weather.weatherapp.R;
 import com.weather.weatherapp.adapters.TwentyHrsForecastAdapter;
 import com.weather.weatherapp.databinding.ActivityTwentyFourForecastBinding;
 import com.weather.weatherapp.utils.SharedPreferenceUtils;
+import com.weather.weatherapp.utils.Utils;
 
 public class TwentyFourHrsForecastActivity extends AppCompatActivity {
     private ActivityTwentyFourForecastBinding binding;
@@ -26,6 +27,7 @@ public class TwentyFourHrsForecastActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityTwentyFourForecastBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
+        Utils.overlayStatusBar(this);
         preferenceUtils = SharedPreferenceUtils.getInstance(getApplicationContext());
 
         String theme = preferenceUtils.getAppTheme();

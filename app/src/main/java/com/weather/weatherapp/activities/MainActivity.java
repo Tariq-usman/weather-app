@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.google.android.material.navigation.NavigationView;
 import com.weather.weatherapp.R;
@@ -26,6 +27,7 @@ import com.weather.weatherapp.databinding.ActivityMainBinding;
 import com.weather.weatherapp.fragments.HomeFragment;
 import com.weather.weatherapp.fragments.UnitsDialogFragment;
 import com.weather.weatherapp.utils.SharedPreferenceUtils;
+import com.weather.weatherapp.utils.Utils;
 import com.weather.weatherapp.viewmodels.MainViewModel;
 
 public class MainActivity extends AppCompatActivity {
@@ -75,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
+       Utils.overlayStatusBar(this);
         /*IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("mode");
         registerReceiver(broadcastReceiver, intentFilter);*/

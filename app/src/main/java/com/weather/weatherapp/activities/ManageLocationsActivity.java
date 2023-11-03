@@ -15,6 +15,7 @@ import com.weather.weatherapp.R;
 import com.weather.weatherapp.adapters.ManageLocationsAdapter;
 import com.weather.weatherapp.databinding.ActivityManageLocationsBinding;
 import com.weather.weatherapp.utils.SharedPreferenceUtils;
+import com.weather.weatherapp.utils.Utils;
 
 public class ManageLocationsActivity extends AppCompatActivity {
 
@@ -27,6 +28,7 @@ private SharedPreferenceUtils preferenceUtils;
         super.onCreate(savedInstanceState);
         binding = ActivityManageLocationsBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
+        Utils.overlayStatusBar(this);
         preferenceUtils = SharedPreferenceUtils.getInstance(getApplicationContext());
 
         String theme = preferenceUtils.getAppTheme();

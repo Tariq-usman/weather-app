@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.weather.weatherapp.activities.FifteenDaysForecastActivity;
 import com.weather.weatherapp.activities.WeeklyForecastActivity;
 import com.weather.weatherapp.databinding.RowItemWeeklyForecastBinding;
 import com.weather.weatherapp.databinding.WeeklyFooterBinding;
@@ -47,7 +48,9 @@ public class WeeklyForecastAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             View wfView = ((WeeklyFooterViewHolder) holder).binding.getRoot();
             wfView.setOnClickListener(view1 -> {
                 Log.i("viewClicked: ", "Footer view");
-
+                Intent intent = new Intent(context, FifteenDaysForecastActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             });
         } else {
             View view = ((WeeklyForecastViewHolder) holder).binding.getRoot();

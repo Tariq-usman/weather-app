@@ -11,28 +11,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.weather.weatherapp.R;
-import com.weather.weatherapp.adapters.SearchLocationsAdapter;
-import com.weather.weatherapp.databinding.ActivityLocationsSearchBinding;
+import com.weather.weatherapp.adapters.FifteenDaysForecastAdapter;
+import com.weather.weatherapp.databinding.ActivityFifteenDaysForecastBinding;
 import com.weather.weatherapp.utils.SharedPreferenceUtils;
 import com.weather.weatherapp.utils.Utils;
 
-public class LocationsSearchActivity extends AppCompatActivity {
-    private ActivityLocationsSearchBinding binding;
-    private RecyclerView locationsRecycler;
-    private SearchLocationsAdapter locationsAdapter;
+public class FifteenDaysForecastActivity extends AppCompatActivity {
+
     private SharedPreferenceUtils preferenceUtils;
+    private ActivityFifteenDaysForecastBinding binding;
+    private RecyclerView fifteenDaysForecastRecycler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityLocationsSearchBinding.inflate(LayoutInflater.from(this));
+        binding = ActivityFifteenDaysForecastBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
         Utils.overlayStatusBar(this);
         preferenceUtils = SharedPreferenceUtils.getInstance(getApplicationContext());
 
         String theme = preferenceUtils.getAppTheme();
-        int colorNight = ContextCompat.getColor(LocationsSearchActivity.this, R.color.trans);
-        int colorday = ContextCompat.getColor(LocationsSearchActivity.this, R.color.white);
+        int colorNight = ContextCompat.getColor(FifteenDaysForecastActivity.this, R.color.trans);
         ObjectAnimator colorAnimation = ObjectAnimator.ofArgb(binding.nightBg, "backgroundColor", colorNight);
         colorAnimation.setDuration(100); // Set the duration of the color transition in milliseconds (1 second in this example)
         boolean isNightMode = false; // Determine whether it's night mode
@@ -50,13 +49,13 @@ public class LocationsSearchActivity extends AppCompatActivity {
 
         binding.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 finish();
             }
         });
-        locationsRecycler = binding.locationsRecycler;
-        locationsRecycler.setLayoutManager(new LinearLayoutManager(this));
-        locationsAdapter = new SearchLocationsAdapter();
-        locationsRecycler.setAdapter(locationsAdapter);
+
+        fifteenDaysForecastRecycler = binding.fifteenDaysForecastRecycler;
+        fifteenDaysForecastRecycler.setLayoutManager(new LinearLayoutManager(this));
+        fifteenDaysForecastRecycler.setAdapter(new FifteenDaysForecastAdapter());
     }
 }

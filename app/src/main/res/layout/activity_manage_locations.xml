@@ -21,6 +21,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:layout_marginTop="@dimen/sp20"
             android:orientation="horizontal">
 
             <ImageButton
@@ -56,16 +57,6 @@
             android:background="@drawable/circular_white_border_empty"
             android:gravity="center_vertical"
             android:orientation="horizontal">
-
-            <!--<androidx.appcompat.widget.SearchView
-                android:id="@+id/searchView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="textCapWords"
-                app:iconifiedByDefault="false"
-                app:queryBackground="@null"
-                app:queryHint="Search for an Athlete"
-                app:theme="@style/SearchViewStyle" />-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
