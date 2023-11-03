@@ -84,6 +84,7 @@
                     android:textSize="@dimen/sp16" />
 
                 <TextView
+                    android:id="@+id/notificationBarStatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Turn On"
@@ -91,6 +92,7 @@
             </LinearLayout>
 
             <Switch
+                android:id="@+id/notificationBarSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -136,6 +138,7 @@
                     android:textSize="@dimen/sp16" />
 
                 <TextView
+                    android:id="@+id/dailyWeatherStatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Morning and evening weather notification and display weather"
@@ -143,6 +146,7 @@
             </LinearLayout>
 
             <Switch
+                android:id="@+id/dailyWeatherSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -188,6 +192,7 @@
                     android:textSize="@dimen/sp16" />
 
                 <TextView
+                    android:id="@+id/weatherAlertStatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Turn On"
@@ -195,6 +200,7 @@
             </LinearLayout>
 
             <Switch
+                android:id="@+id/weatherAlertSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>

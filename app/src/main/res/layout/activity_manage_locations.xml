@@ -1,106 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/sky_with_white_clouds"
-    android:orientation="vertical"
-    android:paddingHorizontal="@dimen/sp16"
     tools:context=".activities.ManageLocationsActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <View
+        android:id="@+id/nightBg"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@null"
-            android:src="@drawable/ic_arrow_back"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/white" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Manage Locations"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp20"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/btnBack"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <LinearLayout
-        android:id="@+id/enterNameName"
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:background="@drawable/circular_white_border_empty"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <!--<androidx.appcompat.widget.SearchView
-            android:id="@+id/searchView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="textCapWords"
-            app:iconifiedByDefault="false"
-            app:queryBackground="@null"
-            app:queryHint="Search for an Athlete"
-            app:theme="@style/SearchViewStyle" />-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_search"
-            android:drawableTint="@color/white"
-            android:paddingHorizontal="@dimen/sp20"
-            android:text="Enter the name of City"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp14"
-            android:textStyle="bold" />
-
-    </LinearLayout>
+        android:layout_height="match_parent" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginVertical="@dimen/sp20"
-        android:background="@drawable/rounded_background"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingHorizontal="@dimen/sp16">
+        android:layout_height="match_parent"
+        android:paddingHorizontal="@dimen/sp16"
+        android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="@dimen/sp38"
-            android:layout_height="@dimen/sp38"
-            android:background="@drawable/bg_circular_gray_solid"
-            android:padding="4dp"
-            android:src="@drawable/ic_location_outline"
-            app:tint="@color/white" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="@dimen/sp20"
+            android:orientation="horizontal">
 
-        <TextView
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:src="@drawable/ic_arrow_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Manage Locations"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp20"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/btnBack"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/enterNameName"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:background="@drawable/circular_white_border_empty"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_search"
+                android:drawableTint="@color/white"
+                android:paddingHorizontal="@dimen/sp20"
+                android:text="Enter the name of City"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp14"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginVertical="@dimen/sp20"
+            android:background="@drawable/rounded_background"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/sp16">
+
+            <ImageView
+                android:layout_width="@dimen/sp38"
+                android:layout_height="@dimen/sp38"
+                android:background="@drawable/bg_circular_gray_solid"
+                android:padding="4dp"
+                android:src="@drawable/ic_location_outline"
+                app:tint="@color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sp20"
+                android:text="Locate Now"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp18"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/managedLocationsRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/sp20"
-            android:text="Locate Now"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp18"
-            android:textStyle="bold" />
+            android:overScrollMode="never"
+            tools:listitem="@layout/row_item_manage_locations" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/managedLocationsRecycler"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:overScrollMode="never"
-        tools:listitem="@layout/row_item_manage_locations" />
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

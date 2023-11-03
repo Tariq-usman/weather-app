@@ -8,6 +8,7 @@
     <color name="white">#FFFFFF</color>
 
     <color name="black">#010101</color>
+    <color name="trans">#80010101</color>
     <color name="night_color">#212121</color>
     <color name="tangerine">#FE8700</color>
     <color name="yellow">#fccd00</color>
