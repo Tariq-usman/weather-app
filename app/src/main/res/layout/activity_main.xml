@@ -25,6 +25,7 @@
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/sp24"
         android:layout_height="match_parent"
         tools:context=".activities.MainActivity">
 
@@ -35,7 +36,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="80dp" />
+                android:layout_height="50dp" />
 
             <FrameLayout
                 android:id="@+id/main_content"

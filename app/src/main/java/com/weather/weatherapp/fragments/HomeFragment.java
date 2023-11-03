@@ -27,6 +27,8 @@ import com.weather.weatherapp.adapters.WeeklyForecastAdapter;
 import com.weather.weatherapp.databinding.FragmentHomeBinding;
 import com.weather.weatherapp.utils.HorizontalRecyclerItemDecorator;
 
+import java.util.ArrayList;
+
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
@@ -54,9 +56,17 @@ public class HomeFragment extends Fragment {
         dailyForecastAdapter = new DailyForecastAdapter(requireContext());
         dailyForecastRecycler.setAdapter(dailyForecastAdapter);
 
+        ArrayList<String> weekDay = new ArrayList<>();
+        weekDay.add("Monday");
+        weekDay.add("Tuesday");
+        weekDay.add("Wednesday");
+        weekDay.add("Thursday");
+        weekDay.add("Friday");
+        weekDay.add("Saturday");
+        weekDay.add("Sunday");
         weeklyForecastRecycler = binding.weeklyForecastRecycler;
         weeklyForecastRecycler.setLayoutManager(new LinearLayoutManager(requireContext()));
-        weeklyForecastAdapter = new WeeklyForecastAdapter(requireContext());
+        weeklyForecastAdapter = new WeeklyForecastAdapter(requireContext(),weekDay);
         weeklyForecastRecycler.setAdapter(weeklyForecastAdapter);
 
         return view;

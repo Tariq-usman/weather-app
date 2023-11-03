@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,15 +15,19 @@ import com.weather.weatherapp.activities.WeeklyForecastActivity;
 import com.weather.weatherapp.databinding.RowItemWeeklyForecastBinding;
 import com.weather.weatherapp.databinding.WeeklyFooterBinding;
 
+import java.util.ArrayList;
+
 
 public class WeeklyForecastAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private int REGULAR_VIEW = 0;
     private int FOOTER_VIEW = 1;
     int size = 7;
     private Context context;
+    private ArrayList<String> weekDay;
 
-    public WeeklyForecastAdapter(Context context) {
+    public WeeklyForecastAdapter(Context context, ArrayList<String> weekDay) {
         this.context = context;
+        this.weekDay = weekDay;
     }
 
     @NonNull
@@ -44,7 +47,7 @@ public class WeeklyForecastAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        if (position == size) {
+        if (position == weekDay.size()) {
             View wfView = ((WeeklyFooterViewHolder) holder).binding.getRoot();
             wfView.setOnClickListener(view1 -> {
                 Log.i("viewClicked: ", "Footer view");
@@ -54,6 +57,7 @@ public class WeeklyForecastAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             });
         } else {
             View view = ((WeeklyForecastViewHolder) holder).binding.getRoot();
+            ((WeeklyForecastViewHolder) holder).binding.tvDay.setText(weekDay.get(position));
             view.setOnClickListener(view1 -> {
                 Log.i("viewClicked: ", "Regular view");
                 Intent intent = new Intent(context, WeeklyForecastActivity.class);
@@ -67,12 +71,12 @@ public class WeeklyForecastAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     @Override
     public int getItemViewType(int position) {
         super.getItemViewType(position);
-        return position == size ? FOOTER_VIEW : REGULAR_VIEW;
+        return position == weekDay.size() ? FOOTER_VIEW : REGULAR_VIEW;
     }
 
     @Override
     public int getItemCount() {
-        return size + 1;
+        return weekDay.size() + 1;
     }
 
     public class WeeklyForecastViewHolder extends RecyclerView.ViewHolder {
