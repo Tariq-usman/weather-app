@@ -36,7 +36,7 @@ public class Constants {
     public static final String MILLIMETERS="Millimeters";
     public static final String INCHES="Inches";
     //Visibility
-    public static final String CENTIGRADE = "Centigrade";
+    public static final String CELSIUS = "Centigrade";
     public static final String FAHRENHEIT = "Fahrenheit";
 
     //Time formats
@@ -44,8 +44,8 @@ public class Constants {
     public static final String TWENTY_FOUR_HRS = "24 hours";
 
     //Date formats
-    public static final String DAY_MONTH_YEAR="day month year";
-    public static final String MONTH_DAY_YEAR="month day year";
-    public static final String YEAR_MONTH_DAY="year month day";
+    public static final String DAY_MONTH_YEAR="dd/mm/yyyy";
+    public static final String MONTH_DAY_YEAR="mm/dd/yyyy";
+    public static final String YEAR_MONTH_DAY="yyyy/mm/dd";
 
 }

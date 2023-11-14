@@ -89,4 +89,14 @@ public class SharedPreferenceUtils {
     public boolean isWeatherAlertActive() {
         return mSharedPreferences.getBoolean(WEATHER_ALERT, false);
     }
+
+    public void setSelectedUnit(String selectedUnit, String unit) {
+        mSharedPreferencesEditor.putString(selectedUnit, unit);
+        mSharedPreferencesEditor.apply();
+        mSharedPreferencesEditor.commit();
+    }
+
+    public String getSelectedUnit(String selectedUnit) {
+        return mSharedPreferences.getString(selectedUnit, "");
+    }
 }

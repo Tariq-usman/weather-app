@@ -338,6 +338,7 @@
 
 
                 <LinearLayout
+                    android:id="@+id/tempView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/sp20"
@@ -359,6 +360,7 @@
                         android:textSize="@dimen/sp18" />
 
                     <TextView
+                        android:id="@+id/tvTemp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="F*"
@@ -366,6 +368,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/windView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/sp20"
@@ -387,6 +390,7 @@
                         android:textSize="@dimen/sp18" />
 
                     <TextView
+                        android:id="@+id/tvWind"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="mph"
@@ -395,6 +399,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/pressureView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/sp20"
@@ -416,6 +421,7 @@
                         android:textSize="@dimen/sp18" />
 
                     <TextView
+                        android:id="@+id/tvPressure"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="mbar"
@@ -424,6 +430,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/precipitationView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/sp20"
@@ -445,6 +452,7 @@
                         android:textSize="@dimen/sp18" />
 
                     <TextView
+                        android:id="@+id/tvPrecipitation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="in"
@@ -453,6 +461,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/visibilityView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/sp20"
@@ -474,6 +483,7 @@
                         android:textSize="@dimen/sp18" />
 
                     <TextView
+                        android:id="@+id/tvVisibility"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="mile"
@@ -482,6 +492,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/timeView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/sp20"
@@ -503,6 +514,7 @@
                         android:textSize="@dimen/sp16" />
 
                     <TextView
+                        android:id="@+id/tvTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="24 hrs format"
@@ -511,6 +523,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/dateView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/sp20"
@@ -532,6 +545,7 @@
                         android:textSize="@dimen/sp18" />
 
                     <TextView
+                        android:id="@+id/tvDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="mm/dd/yyy"

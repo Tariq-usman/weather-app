@@ -34,7 +34,7 @@ public class Enums {
 
     public enum TemperatureUnit {
         FAHRENHEIT(Constants.FAHRENHEIT, "F°"),
-        CENTIGRADE(Constants.CENTIGRADE, "C°");
+        CELSIUS(Constants.CELSIUS, "C°");
         private final String key, value;
 
         TemperatureUnit(String key, String value) {
@@ -367,7 +367,7 @@ public class Enums {
             return DAY_MONTH_YEAR;
         }
 
-        public static ArrayList<String> getAllTimeFormats() {
+        public static ArrayList<String> getAllDateFormats() {
             ArrayList<String> list = new ArrayList<>();
             for (DateFormat dateFormat : values()) {
                 list.add(dateFormat.getKey());

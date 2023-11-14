@@ -16,12 +16,16 @@ import com.weather.weatherapp.R;
 import com.weather.weatherapp.adapters.UnitsAdapter;
 import com.weather.weatherapp.databinding.UnitsDialogFragmentBinding;
 import com.weather.weatherapp.databinding.UnitsSelectionDialogBinding;
+import com.weather.weatherapp.listeners.UnitSelectionListener;
 import com.weather.weatherapp.utils.Constants;
 import com.weather.weatherapp.utils.Enums;
+import com.weather.weatherapp.utils.SharedPreferenceUtils;
 
 import java.util.ArrayList;
 
-public class UnitsDialogFragment extends DialogFragment {
+public class UnitsDialogFragment extends DialogFragment implements UnitSelectionListener {
+
+
     @Override
     public int getTheme() {
 
@@ -105,6 +109,18 @@ public class UnitsDialogFragment extends DialogFragment {
                 dismiss();
             }
         });
+        updateView();
+    }
+
+    private void updateView() {
+        SharedPreferenceUtils preferenceUtils = SharedPreferenceUtils.getInstance(requireContext());
+        binding.tvTemp.setText(preferenceUtils.getSelectedUnit(Constants.TEMPERATURE));
+        binding.tvWind.setText(preferenceUtils.getSelectedUnit(Constants.WIND));
+        binding.tvPressure.setText(preferenceUtils.getSelectedUnit(Constants.PRESSURE));
+        binding.tvPrecipitation.setText(preferenceUtils.getSelectedUnit(Constants.PRECIPITATION));
+        binding.tvVisibility.setText(preferenceUtils.getSelectedUnit(Constants.VISIBILITY));
+        binding.tvTime.setText(preferenceUtils.getSelectedUnit(Constants.TIME));
+        binding.tvDate.setText(preferenceUtils.getSelectedUnit(Constants.DATE));
     }
 
     public void showDialog(String unit) {
@@ -134,14 +150,19 @@ public class UnitsDialogFragment extends DialogFragment {
             enums.addAll(Enums.TimeFormat.getAllTimeFormats());
             title = unit + " formats";
         } else {
-            enums.addAll(Enums.DateFormat.getAllTimeFormats());
+            enums.addAll(Enums.DateFormat.getAllDateFormats());
             title = unit + " formats";
         }
         textView.setText(title);
         RecyclerView recyclerView = unitsSelectionDialogBinding.unitesRecycler;
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        UnitsAdapter unitsAdapter = new UnitsAdapter(requireContext(), enums);
+        UnitsAdapter unitsAdapter = new UnitsAdapter(requireContext(), enums, unit, this);
         recyclerView.setAdapter(unitsAdapter);
+    }
 
+    @Override
+    public void onSelect(String selectedUnit, String unit) {
+        SharedPreferenceUtils.getInstance(getContext()).setSelectedUnit(selectedUnit, unit);
+        updateView();
     }
 }

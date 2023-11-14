@@ -4,13 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.weather.weatherapp.databinding.RowItemUnitsBinding;
+import com.weather.weatherapp.listeners.UnitSelectionListener;
+import com.weather.weatherapp.utils.SharedPreferenceUtils;
 
 import java.util.ArrayList;
 
@@ -18,10 +19,14 @@ public class UnitsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private Context context;
     private ArrayList<String> enums;
     private int lastPosition = -1;
+    private UnitSelectionListener unitSelectionListener;
+    private String selectedUnit;
 
-    public UnitsAdapter(Context context, ArrayList<String> enums) {
+    public UnitsAdapter(Context context, ArrayList<String> enums, String unit, UnitSelectionListener listener) {
         this.context = context;
         this.enums = enums;
+        unitSelectionListener = listener;
+        selectedUnit = unit;
     }
 
     @NonNull
@@ -34,7 +39,11 @@ public class UnitsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ((UnitsViewHolder) holder).binding.tvUnit.setText(enums.get(position));
-        ((UnitsViewHolder) holder).binding.radioButton.setChecked(lastPosition == position);
+        ((UnitsViewHolder) holder).binding.radioButton.setChecked(lastPosition == -1 && enums.get(position).equalsIgnoreCase(SharedPreferenceUtils.getInstance(context).getSelectedUnit(selectedUnit)));
+        if (lastPosition == position) {
+            ((UnitsViewHolder) holder).binding.radioButton.setChecked(lastPosition == position ? true : false);
+            unitSelectionListener.onSelect(selectedUnit, enums.get(position));
+        }
     }
 
     @Override
